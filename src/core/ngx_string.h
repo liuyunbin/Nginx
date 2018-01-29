@@ -182,7 +182,7 @@ u_char *ngx_hex_dump(u_char *dst, u_char *src, size_t len);
 
 
 #define ngx_base64_encoded_length(len)  (((len + 2) / 3) * 4)
-#define ngx_base64_decoded_length(len)  (((len + 3) / 4) * 3)
+#define ngx_base64_decoded_length(len)  (((len + 2) / 4) * 3)
 
 void ngx_encode_base64(ngx_str_t *dst, ngx_str_t *src);
 void ngx_encode_base64url(ngx_str_t *dst, ngx_str_t *src);
