@@ -1369,6 +1369,7 @@ ngx_utf8_length(u_char *p, size_t n)
 {
     u_char  c, *last;
     size_t  len;
+    u_char  *current_point;
 
     last = p + n;
 
@@ -1378,13 +1379,16 @@ ngx_utf8_length(u_char *p, size_t n)
 
         if (c < 0x80) {
             p++;
+            n--;
             continue;
         }
 
+        current_point = p;
         if (ngx_utf8_decode(&p, n) > 0x10ffff) {
             /* invalid UTF-8 */
             return n;
         }
+        n -= p - current_point;
     }
 
     return len;
