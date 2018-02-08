@@ -869,7 +869,7 @@ wildcard:
             return NGX_ERROR;
         }
 
-        name->len = last - 1;
+        name->len = last - skip;
         name->data = ngx_pnalloc(ha->temp_pool, name->len);
         if (name->data == NULL) {
             return NGX_ERROR;
